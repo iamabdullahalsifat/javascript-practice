@@ -14,7 +14,6 @@ Sample Input:
 Sample Output:
 71.04
 
-
 */
 
 let mathematics = 75.25;
