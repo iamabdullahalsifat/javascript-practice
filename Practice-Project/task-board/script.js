@@ -53,8 +53,14 @@ for (let button of completedBtn){
     let box = historyStore.closest('.box');
     let boxFrist = box.querySelector('.box-first');
     let title = boxFrist.querySelector("h2").innerText;
+    let t = new Date();
+    let hours = t.getHours();
+    let miniute = t.getMinutes();
+    let second = t.getSeconds();
+    let ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
     let p = document.createElement("p");
-    p.innerHTML = `<p style="background-color: #ffffff; font-size: 14px; padding: 8px 15px; border-radius: 16px;">You have Complete The Task ${title}</p>`
+    p.innerHTML = `<p style="background-color: #ffffff; font-size: 14px; padding: 8px 15px; border-radius: 16px; margin-bottom: 10px;">You have Complete The Task ${title} at ${hours}:${miniute}:${second}:${ampm}</p>`
     historyList.appendChild(p);
   });
 }
