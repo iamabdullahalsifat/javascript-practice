@@ -4,6 +4,10 @@ let mainBody = document.getElementById('main_body');
 let realTimeDate = document.getElementById('real_time_date');
 let historyList = document.getElementById('history_list');
 let clearHistory = document.getElementById('clear_history');
+let completedBtn = document.querySelectorAll('.completed_button');
+let incrementNumber = document.getElementById('increment_number');
+let decrementNumber = document.getElementById('decrement_number');
+let btnCount = 0;
 
 // Random Color
 function randomColorCreate(){
@@ -35,3 +39,20 @@ realTimeDate.innerHTML = todayDate();
 clearHistory.addEventListener('click', () => {
   historyList.innerHTML = " ";
 })
+// Completed Button
+for (let button of completedBtn){
+  button.addEventListener('click', () => {
+    alert('Board Updated Successfully');
+    incrementNumber.innerText = parseInt(incrementNumber.innerText) + 1;
+    decrementNumber.innerText = parseInt(decrementNumber.innerText) - 1;
+    if(!button.disabled){
+      button.disabled = true;
+      button.style.opacity = "0.5";
+      btnCount++;
+    }
+    if (btnCount === completedBtn.length) {
+      alert("All tasks completed!");
+    };
+
+  });
+}
