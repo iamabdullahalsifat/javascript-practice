@@ -2,6 +2,8 @@
 let randomColor = document.getElementById('random-bg');
 let mainBody = document.getElementById('main_body');
 let realTimeDate = document.getElementById('real_time_date');
+let historyList = document.getElementById('history_list');
+let clearHistory = document.getElementById('clear_history');
 
 // Random Color
 function randomColorCreate(){
@@ -26,6 +28,10 @@ function todayDate(){
   let monthName = month[d.getMonth()];
   let date = d.getDate();
   let year = d.getFullYear();
-  return `${dayName}, <br> <p class="text-[18px]; font-semibold">${monthName} ${date} ${year}</p>`;
+  return `<p style="font-size: 20px;">${dayName} ,</p> <p style="font-size: 20px; font-weight: 600">${monthName} ${date} ${year}</p>`;
 }
 realTimeDate.innerHTML = todayDate();
+// History Remove
+clearHistory.addEventListener('click', () => {
+  historyList.innerHTML = " ";
+})
