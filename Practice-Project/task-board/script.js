@@ -35,13 +35,9 @@ function todayDate(){
   return `<p style="font-size: 20px;">${dayName} ,</p> <p style="font-size: 20px; font-weight: 600">${monthName} ${date} ${year}</p>`;
 }
 realTimeDate.innerHTML = todayDate();
-// History Remove
-clearHistory.addEventListener('click', () => {
-  historyList.innerHTML = " ";
-})
 // Completed Button
 for (let button of completedBtn){
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (event) => {
     alert('Board Updated Successfully');
     incrementNumber.innerText = parseInt(incrementNumber.innerText) + 1;
     decrementNumber.innerText = parseInt(decrementNumber.innerText) - 1;
@@ -53,6 +49,16 @@ for (let button of completedBtn){
     if (btnCount === completedBtn.length) {
       alert("All tasks completed!");
     };
-
+    let historyStore = event.target;
+    let box = historyStore.closest('.box');
+    let boxFrist = box.querySelector('.box-first');
+    let title = boxFrist.querySelector("h2").innerText;
+    let p = document.createElement("p");
+    p.innerHTML = `<p style="background-color: #ffffff; font-size: 14px; padding: 8px 15px; border-radius: 16px;">You have Complete The Task ${title}</p>`
+    historyList.appendChild(p);
   });
 }
+// History Remove
+clearHistory.addEventListener('click', () => {
+  historyList.innerHTML = " ";
+})
